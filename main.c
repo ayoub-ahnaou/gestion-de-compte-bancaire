@@ -20,7 +20,3 @@ int main(){
     printf("\n");
     return 0;
 }
-
-void ouvre_fichier(char * nom_fichier){
-    FILE * file;
-}
