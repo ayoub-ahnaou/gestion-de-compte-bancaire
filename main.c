@@ -10,7 +10,8 @@ typedef struct Client {
     char num_compte[8];
     char nom[20];
     char operation;
-    float anc_solde, nouv_solde;
+    float anc_solde;
+    float nouv_solde;
     Date date;
 } Client;
 
