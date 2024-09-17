@@ -15,8 +15,24 @@ typedef struct Client {
     Date date;
 } Client;
 
+// prototypes des fonctions
+int ouvre_fichier(char * nom);
+
 int main(){
 
     printf("\n");
     return 0;
+}
+
+int ouvre_fichier(char * nom){
+    FILE * file;
+    file = fopen(nom, "a+");
+    if(file != NULL){
+        printf("fichier ouvree..\n");
+        return 1;
+    }
+    else{
+        printf("erreur en ouvrant le fichier. essayez une autre fois..\n");
+        return 0;
+    }
 }
