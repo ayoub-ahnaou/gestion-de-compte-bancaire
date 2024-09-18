@@ -15,17 +15,21 @@ typedef struct Date {
 
 typedef struct Client {
     char num_compte[8];
-    char nom[20];
+    char username[20];
     char operation;
     float anc_solde;
     float nouv_solde;
     Date date;
 } Client;
 
+Client clients[10];
+int size = 0;
+
 // prototypes des fonctions
 void menu();
 int ouvre_fichier(char * nom);
 void ferme_fichier(FILE * file);
+void ajouter_client();
 
 int main(){
     menu();
@@ -50,7 +54,7 @@ void menu(){
         printf(COLOR_YELLOW "----------------------------------------------\n" COLOR_RESET);
 
         switch(choice){
-            case 1: break;
+            case 1: ajouter_client(); break;
             case 2: break;
             case 3: break;
             case 4: break;
@@ -81,4 +85,20 @@ int ouvre_fichier(char * nom){
 void ferme_fichier(FILE * file){
     fclose(file);
     printf("fichier fermee avec success..\n");
+}
+
+void ajouter_client(){
+    system("clear");
+    printf(COLOR_YELLOW "----------------------------------------------\n");
+    printf("                ajouter client                \n");
+    printf("----------------------------------------------\n" COLOR_RESET);
+    printf("numero de compte: "); 
+    scanf(" %[^\n]s", clients[size].num_compte);
+    printf("nom et prenom: ");
+    scanf(" %[^\n]s", clients[size].username);
+    printf("votre solde: "); scanf("%f", &clients[size].anc_solde);
+    printf("date de naissance (JJ/MM/AAAA): "); scanf("%d/%d/%d", &clients[size].date.jour, &clients[size].date.mois, &clients[size].date.annee);
+    printf(COLOR_GREEN "\nnouveau client a ete ajoutee avec le numero '%s'..\n" COLOR_RESET, clients[size].num_compte);
+    
+    size = size + 1;
 }
