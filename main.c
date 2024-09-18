@@ -17,6 +17,7 @@ typedef struct Client {
 
 // prototypes des fonctions
 int ouvre_fichier(char * nom);
+void ferme_fichier(FILE * file);
 
 int main(){
 
@@ -35,4 +36,9 @@ int ouvre_fichier(char * nom){
         printf("erreur en ouvrant le fichier. essayez une autre fois..\n");
         return 0;
     }
+}
+
+void ferme_fichier(FILE * file){
+    fclose(file);
+    printf("fichier fermee avec success..\n");
 }
