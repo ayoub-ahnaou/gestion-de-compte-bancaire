@@ -18,7 +18,6 @@ typedef struct Client {
     char username[30];
     float solde;
     Date date;
-    char operation;
 } Client;
 
 Client clients[10] = {
