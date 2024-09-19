@@ -23,9 +23,9 @@ typedef struct Client {
 } Client;
 
 Client clients[10] = {
-    {"12345673", "Alice", 0, 1200.75, {12, 9, 2024}},
-    {"23456478", "Bob", 0, 450.00, {10, 9, 2024}},
-    {"34567869", "Charlie", 0, 2300.00, {9, 9, 2024}}
+    {"12345673", "alice", 0, 1200.75, {12, 9, 2024}},
+    {"23456478", "bob", 0, 450.00, {10, 9, 2024}},
+    {"34567869", "charlie", 0, 2300.00, {9, 9, 2024}}
 } ;
 int size = 3;
 
@@ -138,10 +138,42 @@ void afficher_client(){
 
 void rechercher_par_num(){
     system("clear");
+    if(size == 0){
+        printf(COLOR_RED "aucun client a disponible maintenant \n" COLOR_RESET);
+        return;
+    }
+    char num[9];
+    printf("entrer le numero de compte: ");
+    scanf("%s", num);
+    printf("-----------------------------------------------------------------------\n");
+    for(int i=0; i<size; i++){
+        if(strcmp(clients[i].num_compte, num) == 0){
+            printf(COLOR_VIOLET "num de compte    username       date naissance   solde actuel\n" COLOR_RESET);
+            printf("%-16s %-14s %-2d/%-2d/%-10d %.2f \n", clients[i].num_compte, clients[i].username, clients[i].date.jour, clients[i].date.mois, clients[i].date.annee, clients[i].nouv_solde);
+            return;
+        }
+    }
+    printf(COLOR_RED "aucun client a trouvee sous le numero '%s' \n" COLOR_RESET, num);
 }
 
 void rechercher_par_nom(){
     system("clear");
+    if(size == 0){
+        printf(COLOR_RED "aucun client a disponible maintenant \n" COLOR_RESET);
+        return;
+    }
+    char nom[30];
+    printf("entrer le nom: ");
+    scanf("%s", nom);
+    printf("-----------------------------------------------------------------------\n");
+    for(int i=0; i<size; i++){
+        if(strcmp(clients[i].username, nom) == 0){
+            printf(COLOR_VIOLET "num de compte    username       date naissance   solde actuel\n" COLOR_RESET);
+            printf("%-16s %-14s %-2d/%-2d/%-10d %.2f \n", clients[i].num_compte, clients[i].username, clients[i].date.jour, clients[i].date.mois, clients[i].date.annee, clients[i].nouv_solde);
+            return;
+        }
+    }
+    printf(COLOR_RED "aucun client a trouvee sous le nom '%s' \n" COLOR_RESET, nom);
 }
 
 void lister_clients(){
