@@ -30,6 +30,9 @@ void menu();
 int ouvre_fichier(char * nom);
 void ferme_fichier(FILE * file);
 void ajouter_client();
+void afficher_client();
+void rechercher_par_num();
+void rechercher_par_nom();
 
 int main(){
     menu();
@@ -55,7 +58,7 @@ void menu(){
 
         switch(choice){
             case 1: ajouter_client(); break;
-            case 2: break;
+            case 2: afficher_client(); break;
             case 3: break;
             case 4: break;
             case 5: exit(0); break;
@@ -101,4 +104,36 @@ void ajouter_client(){
     printf(COLOR_GREEN "\nnouveau client a ete ajoutee avec le numero '%s'..\n" COLOR_RESET, clients[size].num_compte);
     
     size = size + 1;
+}
+
+void afficher_client(){
+    int choice;
+    system("clear");
+    do{
+        printf(COLOR_YELLOW "----------------------------------------------\n");
+        printf("               afficher client                \n");
+        printf("----------------------------------------------\n");
+        puts("1- chercher par numero de compte");
+        puts("2- chercher par nom");
+        puts("3- retour au menu principale");
+        printf("----------------------------------------------\n" COLOR_RESET);
+        printf("entrer votre choix: "); scanf("%d", &choice);
+        switch(choice){
+            case 1: rechercher_par_num(); break;
+            case 2: rechercher_par_nom(); break;
+            case 3: return; break;
+            default: 
+                system("clear");
+                printf(COLOR_RED "veuillez choisit un choix valide dans le menu.\n" COLOR_RESET);
+                break;
+        }
+    }
+    while(choice != 3);
+}
+
+void rechercher_par_num(){
+    system("clear");
+}
+void rechercher_par_nom(){
+    system("clear");
 }
